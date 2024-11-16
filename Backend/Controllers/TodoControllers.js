@@ -158,7 +158,7 @@ const DietDataController = async(req,res)=>{
         
         res.json({ msg :`displaying ${dietPlans[weeks_passed % 3].name} for week ${weeks_passed}` ,data : dietPlans[weeks_passed % 3].days});
     }catch(error){
-      res.status(401).json({message:error.message});
+      res.status(401).json({msg:error.message});
     }
 }
 
@@ -170,10 +170,14 @@ const DietProgressController = async(req,res)=>{
     const start_date = new Date(user.created_at);
     const today = new Date();
     const weeks_passed = Math.floor((today - start_date) / (1000 * 60 * 60 *24 * 7));
-    const result = await People.updateOne(
+    /*const result = await People.updateOne(
       { name: "mohith" }, 
       { $set: {DietProgress:{...user.DietProgress , [weeks_passed]: progressBar }}}  
-    );
+    );*/
+    const result = await People.updateOne(
+      { name: "mohith" },
+      { $set: { [`DietProgress.${weeks_passed}`]: progressBar } }
+    )
     if (result.modifiedCount > 0) {
       res.json({msg : "updated successfully"});
     } else {
@@ -184,4 +188,6 @@ const DietProgressController = async(req,res)=>{
   }
 
 }
+
+
 module.exports = {DietDataController,DietProgressController};

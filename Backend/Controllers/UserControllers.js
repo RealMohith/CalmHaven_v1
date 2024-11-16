@@ -6,7 +6,7 @@ const People = require("../Models/UserModel")
 const LoginController = async(req,res)=>{
     try {
         const {name,password} = req.body;
-        
+        const user = await People.findOne({name:name});
         if(user && (user.pass == password)){
             const token = jwt.sign({name:name},process.env.JWT_SECRET_KEY,{expiresIn: "1h"});
             return res.json({ msg : "Logged in Successfully" , token : token});
