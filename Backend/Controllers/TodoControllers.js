@@ -150,16 +150,38 @@ const DietDataController = async(req,res)=>{
             },
           ];
 
-        const user = await People.findOne({"name" : "mohithgowdar"});
+        const user = await People.findOne({"name" : "mohith"});
         
-        const start_date = new Date(user.created_at);
+        const start_date = new Date(await user.created_at);
         const today = new Date();
         const weeks_passed = Math.floor((today - start_date) / (1000 * 60 * 60 *24 * 7));
         
-        res.json({ msg :`displaying ${dietPlans[weeks_passed % 3].name}` ,data : dietPlans[weeks_passed % 3].days});
+        res.json({ msg :`displaying ${dietPlans[weeks_passed % 3].name} for week ${weeks_passed}` ,data : dietPlans[weeks_passed % 3].days});
     }catch(error){
-        res.json({msg:error.message})
+      res.status(401).json({message:error.message});
     }
 }
 
-module.exports = {DietDataController};
+const DietProgressController = async(req,res)=>{
+  try{
+    // req.body contains 0,1,2 for <3 , >3<7 ,7 checkboxes ticked
+    const {progressBar}  = req.body;
+    const user = await People.findOne({"name" : "mohith"});
+    const start_date = new Date(user.created_at);
+    const today = new Date();
+    const weeks_passed = Math.floor((today - start_date) / (1000 * 60 * 60 *24 * 7));
+    const result = await People.updateOne(
+      { name: "mohith" }, 
+      { $set: {DietProgress:{...user.DietProgress , [weeks_passed]: progressBar }}}  
+    );
+    if (result.modifiedCount > 0) {
+      res.json({msg : "updated successfully"});
+    } else {
+      res.json({msg : "not updated"});
+    }
+  }catch(err){
+    res.status(401).json({message:err.message});
+  }
+
+}
+module.exports = {DietDataController,DietProgressController};
