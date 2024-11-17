@@ -1,8 +1,46 @@
 # CalmHaven_v1
 
+
+## Structure Breakdown:
+1. **Table of Contents**: Provides a clickable list of sections.
+2. **Project Overview**: Describes the purpose of the project.
+3. **Backend**: Details the backend functionality and endpoints.
+4. **Steps to Access the Codebase**: Provides setup instructions for developers.
+5. **Contact Me**: A way to reach out for questions or contributions.
+
+
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Backend](#backend)
+- [Steps to Access the Codebase](#steps-to-access-the-codebase)
+- [Contact Me](#contact-me)
+
+These links will take you to the corresponding sections when clicked.
+
+---
+
+
+## Project Overview
+
+**CalmHaven_v1** an online platform aimed at helping individuals dealing with PTSD (Post-Traumatic Stress Disorder). The site provides a range of personalized resources, including a chatbot for instant support, educational blog articles, inspiring stories, resources such as YouTube videos, an exercise regimen, and a structured diet plan to enhance mental health. This initiative intends to equip users with tools to cope with their symptoms and enhance their overall quality of life.
+
+Currently, the platform includes:
+
+- **Chatbot**: A conversational AI designed to provide immediate support and coping strategies for PTSD.
+- **Blogs**: Informative articles about PTSD, self-care, coping techniques, and mental health tips to guide users in their healing journey.
+- **Exercise Plan**: A feature to organise physical activity, promoting a healthy lifestyle and stress relief through exercise
+- **Diet Plan**: A dynamic weekly diet plan to encourage healthy eating habits, which are important for mental and physical well-being.
+- **Progress Tracker**: A feature that allows users to monitor their progress and celebrate small wins in their mental health journey.
+
+This project is still under development, with several additional features planned for future releases. The focus is on providing a safe and supportive space for users who are dealing with PTSD.
+
+
 ## Backend
 
 ### API’s
+
+
+
 
 - Users :
     
@@ -22,8 +60,8 @@
         
         ```json
         { 
-        	"msg" : "Logged in Successfully" ,
-        	"token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibW9oaXRoIn0.BA-741VBIYXE6pMxd-xsEcSK8GA91Ol1mXFv0BnID1c"
+          "msg" : "Logged in Successfully" ,
+          "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibW9oaXRoIn0.BA-741VBIYXE6pMxd-xsEcSK8GA91Ol1mXFv0BnID1c"
         }
         ```
         
@@ -42,7 +80,7 @@
         
         ```json
         {
-        	"msg" : "User created successfully at ${Date}"
+        	"msg" : "User created successfully at 17th November"
         	"token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibW9oaXRoIn0.BA-741VBIYXE6pMxd-xsEcSK8GA91Ol1mXFv0BnID1c"
         }
         ```
@@ -57,13 +95,13 @@
     > add Authorization in header with Bearer before the token
     > 
     
-    ```json
+    ```
     Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWFuaXNoYSIsImlhdCI6MTczMTgxMDUyMSwiZXhwIjoxNzMxODE0MTIxfQ.oOp9cDPKB8pl5UeRG3AExPPM0lm9Axq5LKnj9RTRcIw
     ```
     
     Response : 
     
-    ```json
+    ```
     it adds the username into “req.Bearing_User” which can be accessed by the next routes
     ```
     
@@ -130,12 +168,12 @@
         
         PUT:
         
-        > make a call to this endpoint whenever a checkbox is ticked with the following body
+        > make a call to this endpoint whenever a checkbox is ticked with the following body (0 for less than 3 ticks, 1 for less than 7 ticks and 2 for 7 ticks)
         > 
         
         ```json
         {
-        	"progressBar" : 2  //value between 0,1,2
+        	"progressBar" : 2 
         }
         ```
         
@@ -155,13 +193,13 @@
 
 1. run the following in terminal
     
-    **`git clone [https://github.com/RealMohith/CalmHaven_v1](https://github.com/RealMohith/CalmHaven_v1)`**
+    **`git clone https://github.com/RealMohith/CalmHaven_v1`**
     
-    `cd Backend`
+    ` cd Backend `
     
     `npm install`
     
-2. add the following files
+2. add the following files inside Backend Folder
     
     .env  
     
@@ -177,3 +215,17 @@
 1. run the following in terminal
     
     `node server.js`
+
+
+
+
+
+## Contact Me
+
+If you have any questions, suggestions, or would like to contribute to the project, feel free to reach out to me:
+
+- **Email**: mohithgowdait@gmail.com
+- **GitHub**: [https://github.com/RealMohith](https://github.com/RealMohith)
+- **LinkedIn**: [https://www.linkedin.com/in/mohithgowdar](https://linkedin.com/in/mohithgowdar)
+
+I'd love to hear from you!
