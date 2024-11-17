@@ -151,14 +151,19 @@ const DietDataController = async(req,res)=>{
           ];
 
         const user = await People.findOne({"name" : req.Bearing_User.name});
-        
+        if (!user) {
+          return res.status(404).json({
+              success: false,
+              message: "User not found"
+          })}
+
         const start_date = new Date(await user.created_at);
         const today = new Date();
         const weeks_passed = Math.floor((today - start_date) / (1000 * 60 * 60 *24 * 7));
         
         res.json({ msg :`displaying ${dietPlans[weeks_passed % 3].name} for week ${weeks_passed}` ,data : dietPlans[weeks_passed % 3].days});
     }catch(error){
-      res.status(401).json({msg:error.message});
+      res.status(500).json({msg:error.message});
     }
 }
 
@@ -166,7 +171,18 @@ const DietProgressController = async(req,res)=>{
   try{
     // req.body contains 0,1,2 for <3 , >3<7 ,7 checkboxes ticked
     const {progressBar}  = req.body;
+    if (![0,1,2].includes(progressBar)) {
+      return res.status(400).json({
+          success: false,
+          message: "Invalid progress value. Must be 0, 1, or 2"
+      });
+  }
     const user = await People.findOne({"name" : req.Bearing_User.name});
+    if (!user) {
+      return res.status(404).json({
+          message: "User not found"
+      });
+  }
     const start_date = new Date(user.created_at);
     const today = new Date();
     const weeks_passed = Math.floor((today - start_date) / (1000 * 60 * 60 *24 * 7));
@@ -184,7 +200,7 @@ const DietProgressController = async(req,res)=>{
       res.json({msg : "not updated"});
     }
   }catch(err){
-    res.status(401).json({message:err.message});
+    res.status(500).json({message:err.message});
   }
 
 }

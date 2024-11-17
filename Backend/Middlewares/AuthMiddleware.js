@@ -4,7 +4,7 @@ const Authorize = (req,res,next)=>{
     
     const token = req.header('Authorization');
     if (!token && !(token.startsWith('Bearer ')) ){
-        return res.status(401).send({message: 'Access denied. No token provided.'});
+        return res.status(401).send({message: 'Access denied. No token/invalid token provided.'});
     }
     
     try {
@@ -15,7 +15,7 @@ const Authorize = (req,res,next)=>{
         console.log(req.Bearing_User.name);
         next();
     }catch(err){
-        res.status(400).send('Invalid token' + err.message)
+        res.status(403).send('Invalid token' + err.message)
         }
                     
 };
