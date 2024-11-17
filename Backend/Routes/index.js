@@ -5,9 +5,10 @@ const TodoRouter = require("./TodoRoutes");
 
 //http://localhost:8000/api
 
+const {Authorize} = require("../Middlewares/AuthMiddleware")
 
 router.use("/User", UserRouter);//login-POSTx //signup-POST (name , password)//x
-router.use("/Todo" , TodoRouter);//DietProgress-PUT // DietData-GETx
+router.use("/Todo" , Authorize ,  TodoRouter);//DietProgress-PUT // DietData-GETx
 
 router.get("/home" , (req,res)=>{
     res.send("Welcome Home");

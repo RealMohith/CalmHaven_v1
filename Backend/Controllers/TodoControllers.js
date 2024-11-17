@@ -150,7 +150,7 @@ const DietDataController = async(req,res)=>{
             },
           ];
 
-        const user = await People.findOne({"name" : "mohith"});
+        const user = await People.findOne({"name" : req.Bearing_User.name});
         
         const start_date = new Date(await user.created_at);
         const today = new Date();
@@ -166,7 +166,7 @@ const DietProgressController = async(req,res)=>{
   try{
     // req.body contains 0,1,2 for <3 , >3<7 ,7 checkboxes ticked
     const {progressBar}  = req.body;
-    const user = await People.findOne({"name" : "mohith"});
+    const user = await People.findOne({"name" : req.Bearing_User.name});
     const start_date = new Date(user.created_at);
     const today = new Date();
     const weeks_passed = Math.floor((today - start_date) / (1000 * 60 * 60 *24 * 7));
@@ -175,7 +175,7 @@ const DietProgressController = async(req,res)=>{
       { $set: {DietProgress:{...user.DietProgress , [weeks_passed]: progressBar }}}  
     );*/
     const result = await People.updateOne(
-      { name: "mohith" },
+      { name: req.Bearing_User.name },
       { $set: { [`DietProgress.${weeks_passed}`]: progressBar } }
     )
     if (result.modifiedCount > 0) {
