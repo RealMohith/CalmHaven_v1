@@ -189,7 +189,7 @@ This project is still under development, with several additional features planne
         ```
         
 
-## Steps to access the codebase :
+## Steps to access the codebase
 
 1. run the following in terminal
     
