@@ -97,7 +97,7 @@
         <h1>Diet Plan</h1>
         <div id="diet-plans">
             <!-- Diet plans will be displayed here -->
-            <div class="loading" id="loading">Loading...</div>
+            <div class="loading" id="loading">Wait brother </div>
         </div>
         <div id="progress-bar-status">Progress: 0</div>
         <div class="error-message" id="error-message" style="display: none;">
@@ -135,7 +135,7 @@
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWFudXNocmVlIiwiaWF0IjoxNzMyMDM4NTM2LCJleHAiOjE3MzIwNDIxMzZ9.Ar2gLlNRFg0WCkg2XUJMU4SSRDg0uNKFt3Xsn7z2Fm0'
+                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWFudXNocmVlIiwiaWF0IjoxNzMyMTE1Njc0LCJleHAiOjE3MzIxMTkyNzR9.h24fAp3CpwZYY8_u37OKfGE4TW5ii3M9h4F4EIhbjZg'
                 },
                 body: JSON.stringify({ progressBar: progress, username: "john" })
             })
@@ -152,7 +152,7 @@
                 const response = await fetch('http://localhost:8000/api/Todo/DietData', {
                     method: 'GET',
                     headers: {
-                        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWFudXNocmVlIiwiaWF0IjoxNzMyMDM4NTM2LCJleHAiOjE3MzIwNDIxMzZ9.Ar2gLlNRFg0WCkg2XUJMU4SSRDg0uNKFt3Xsn7z2Fm0',
+                        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWFudXNocmVlIiwiaWF0IjoxNzMyMTE1Njc0LCJleHAiOjE3MzIxMTkyNzR9.h24fAp3CpwZYY8_u37OKfGE4TW5ii3M9h4F4EIhbjZg',
                         'Content-Type': 'application/json'
                     }
                 });

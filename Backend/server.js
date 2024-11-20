@@ -3,7 +3,7 @@ require("dotenv").config();
 const cors = require("cors");
 const app = express();
 const routes = require("./Routes/index");
-app.use(cors({origin: "http://localhost:3000/"}));
+app.use(cors());
 app.use(express.urlencoded());
 app.use(express.json());
 
