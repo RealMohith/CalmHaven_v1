@@ -24,12 +24,12 @@ const LoginController = async(req,res)=>{
 };
 const SignupController = async(req,res)=>{
     try{
-        const {name,password} = req.body;
+        const {name,password,surveyres} = req.body;
         if(await People.findOne({name:name})){
             return res.status(409).json({message:"User already exists"});
         };
         
-        const User = new People({name:name,pass:password});
+        const User = new People({name:name,pass:password,SurveyResults:surveyres});
         await User.save();
         const token = jwt.sign({name:name},process.env.JWT_SECRET_KEY,{expiresIn: "1h"})
         res.status(201).json({message:`User created successfully at ${User.created_at}` ,token:token});
