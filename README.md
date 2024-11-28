@@ -72,7 +72,8 @@ This project is still under development, with several additional features planne
         ```json
         {
           "name": "mohith",
-          "password": "123"
+          "password": "123",
+          "surveyres" : 3 //any number btwn (0-8)
         }
         ```
         
@@ -180,6 +181,79 @@ This project is still under development, with several additional features planne
         Response :
         
         > The database updates the progressBar for the current week.
+        > 
+        
+        ```json
+        {
+            "msg": "updated successfully"
+        }
+        ```
+
+
+    - http://localhost:8000/api/Todo/ExerciseData
+        
+        GET:
+        
+        
+        
+        ```json
+        {
+          "msg": "displaying Poor Sleep Quality + Low Stress Level",
+          "data": [
+            {
+              "day": "Day 1",
+              "morning": "Cat-Cow Pose",
+              "evening": "Light Walking"
+            },
+            {
+              "day": "Day 2",
+              "morning": "Child's Pose",
+              "evening": "Neck and Shoulder Stretches"
+            },
+            {
+              "day": "Day 3",
+              "morning": "Seated Forward Fold",
+              "evening": "Breathing Exercises (4-7-8 Method)"
+            },
+            {
+              "day": "Day 4",
+              "morning": "Reclined Bound Angle Pose",
+              "evening": "Gentle Stretching"
+            },
+            {
+              "day": "Day 5",
+              "morning": "Sphinx Pose",
+              "evening": "Guided Meditation"
+            },
+            {
+              "day": "Day 6",
+              "morning": "Happy Baby Pose",
+              "evening": "Nature Walk"
+            },
+            {
+              "day": "Day 7",
+              "morning": "Legs-Up-The-Wall Pose",
+              "evening": "Body Scan Relaxation"
+            }
+          ]
+      }   
+        ```
+    - http://localhost:8000/api/Todo/ExerciseProgress
+        
+        PUT:
+        
+        > make a call to this endpoint whenever a checkbox is ticked with the following body (0 for less than 3 ticks, 1 for less than 7 ticks and 2 for 7 ticks)
+        > 
+        
+        ```json
+        {
+        	"EprogressBar" : 2 
+        }
+        ```
+        
+        Response :
+        
+        > The database updates the  EprogressBar for the current week.
         > 
         
         ```json
